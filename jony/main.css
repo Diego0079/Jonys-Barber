@@ -1768,12 +1768,48 @@ header {
         padding: 0 !important;        /* Sin padding extra */
         border: none !important;      /* Sin borde */
         font-size: 0.9rem;
-        pointer-events: none;         /* Para que no bloquee el clic en el enlace */
+        pointer-events: none;         /* Para que no bloquee el clic en el enlace */   /* Sin fondo */       /* Sin borde */
+        box-shadow: none !important;   /* Sin sombra */     /* Sin padding */
+        width: auto !important;        /* Ajusta al contenido */
+        height: auto !important;
     }
+
 
     /* Ajuste de icono */
     .social-preview i {
         font-size: 1.2rem; /* un poco más pequeño y elegante */
+    }
+
+    
+    /* Aseguramos que el enlace no tenga estilo extraño */
+    .social-preview a {
+        display: block;
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+        text-decoration: none !important;
+    }
+    
+    .social-preview img {
+    border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .social-preview.tiktok-preview img {
+        object-fit: cover;  /* asegura recorte correcto */
+        width: 100%;
+        height: auto;
+    }
+    
+    .social-preview.tiktok-preview .tiktok-overlay {
+        font-size: 0.9rem;
+        gap: 5px;
+        color: #fff;
+        text-align: center;
     }
 
     
