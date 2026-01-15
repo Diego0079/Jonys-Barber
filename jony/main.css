@@ -1699,36 +1699,38 @@ header {
     }
 
 
-    #sobre-nosotros {
+   #sobre-nosotros {
         flex-direction: column; /* texto arriba, imagen abajo */
-        align-items: center;    /* centra contenido */
-        gap: 30px;
+        align-items: center;
+        gap: 25px;
         padding: 40px 5%;
     }
 
     #sobre-nosotros div {
-        width: 100%;  /* los div internos ocupan ancho completo */
-        max-width: 500px; /* para no exceder el contenedor */
+        width: 100%;
+        max-width: 400px; /* reducimos el ancho máximo */
     }
 
     #sobre-nosotros img {
         width: 100%;   /* ocupa todo el div padre */
         height: auto;  /* mantiene proporción */
+        max-height: 250px; /* límite máximo de altura */
         display: block;
         margin: 0 auto; /* centra la imagen */
         border-radius: 10px;
         border: 1px solid var(--primary-color);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        object-fit: cover; /* recorta suavemente si hace falta */
     }
 
     #sobre-nosotros h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
         text-align: center;
         margin-bottom: 15px;
     }
 
     #sobre-nosotros p {
-        font-size: 1rem;
+        font-size: 0.95rem;
         text-align: center;
         color: #ccc;
     }
@@ -1767,6 +1769,7 @@ html, body {
 [data-aos="fade-left"], [data-aos="fade-right"] {
     max-width: 100% !important;
 }
+
 
 
 
