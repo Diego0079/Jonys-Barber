@@ -1700,23 +1700,29 @@ header {
 
 
     #sobre-nosotros {
-        flex-direction: column; /* Texto arriba, foto abajo */
+        flex-direction: column; /* texto arriba, imagen abajo */
+        align-items: center;    /* centra contenido */
         gap: 30px;
         padding: 40px 5%;
     }
 
+    #sobre-nosotros div {
+        width: 100%;  /* los div internos ocupan ancho completo */
+        max-width: 500px; /* para no exceder el contenedor */
+    }
+
     #sobre-nosotros img {
-        width: 100%;
-        height: auto; /* Mantiene proporción */
-        max-width: 400px; /* No se pase del contenedor */
+        width: 100%;   /* ocupa todo el div padre */
+        height: auto;  /* mantiene proporción */
+        display: block;
+        margin: 0 auto; /* centra la imagen */
         border-radius: 10px;
         border: 1px solid var(--primary-color);
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        margin: 0 auto; /* centra la imagen */
     }
 
     #sobre-nosotros h2 {
-        font-size: 2rem; /* Ajusta tamaño del título */
+        font-size: 2rem;
         text-align: center;
         margin-bottom: 15px;
     }
@@ -1726,19 +1732,6 @@ header {
         text-align: center;
         color: #ccc;
     }
-
-       #sobre-nosotros img {
-        width: 100%;
-        height: auto; /* Mantiene la proporción original */
-        max-width: 500px; /* Para no exceder contenedor */
-        display: block;
-        margin: 0 auto;
-        border-radius: 10px;
-        border: 1px solid var(--primary-color);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-
 }
 
 
@@ -1774,6 +1767,7 @@ html, body {
 [data-aos="fade-left"], [data-aos="fade-right"] {
     max-width: 100% !important;
 }
+
 
 
 
