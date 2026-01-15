@@ -1355,6 +1355,13 @@ h2 {
     opacity: 0; transition: 0.3s;
 }
 
+.tiktok-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    opacity: 0; transition: 0.3s;
+}
+
 .insta-preview:hover .insta-overlay { opacity: 1; }
 .insta-preview:hover img { transform: scale(1.1); }
 .tiktok-preview:hover img { transform: scale(1.1); }
@@ -1428,6 +1435,9 @@ h2 {
 .tiktok-preview:hover .tiktok-overlay {
     opacity: 1;
 }
+
+
+  
 
 
 /* ============================================================
@@ -1631,6 +1641,7 @@ header {
     position: fixed;
 }
 
+
 /* 1. Aseguramos que el contenedor no tenga márgenes internos grandes */
 .nav-container {
     display: flex !important;
@@ -1754,6 +1765,9 @@ header {
         text-align: center;
         color: #ccc;
     }
+
+
+
     
 }
 
