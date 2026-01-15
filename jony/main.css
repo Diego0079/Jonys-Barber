@@ -1540,68 +1540,7 @@ h2 {
         transform: scale(1.05);      /* Un efecto más natural para pantallas táctiles */
     }
 
-    .social-main-container {
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 100% !important;
-        max-width: 100vw !important;
-        padding: 0 !important;
-        margin: 0 auto !important;
-        overflow: hidden !important; 
-    }
 
-
-    /* 3. Bloque central: Estrecho */
-    .social-info-center {
-        order: -1; 
-        width: 80% !important;
-        max-width: 240px !important;
-        margin: 0 auto 15px auto !important;
-        padding: 0 !important;
-    }
-
-    /* 4. Botones y texto mini */
-    .social-btn {
-        width: 100% !important;
-        padding: 8px 12px !important;
-        font-size: 0.8rem !important;
-    }
-
-    .social-text {
-        font-size: 0.75rem !important;
-        line-height: 1.2 !important;
-        margin-top: 5px !important;
-    }
-
-
-    .social-preview {
-        position: relative;
-        overflow: hidden;
-        display: block; /* Para que el enlace o div ocupe espacio */
-        width: 100%;
-    }
-
-
-
-.social-preview::before {
-    display: none !important;
-}
-
-        .social-preview i {
-            font-size: 1.5rem;
-        }
-
-        .social-preview:hover img {
-            transform: scale(1.05); /* sutil efecto zoom si quieren */
-        }
-
-    .btn-reserva-card {
-        width: 100%; /* El botón ocupa todo el ancho de la tarjeta */
-        padding: 12px 5px;
-        font-size: 0.85rem;
-        box-sizing: border-box; /* Evita que el botón "empuje" la tarjeta hacia afuera */
-    }
 
 
 
@@ -1620,16 +1559,7 @@ header {
     
 }
 
-.social-preview::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.25), rgba(0,0,0,0));
-    z-index: 1; /* Debajo del overlay */
-    pointer-events: none;
-}
+
 
 
 
@@ -1759,88 +1689,76 @@ header {
         color: #ccc;
     }
 
-    /* Ocultamos el degradado suave sobre la imagen */
-    .social-preview::before {
-        display: none !important;
+    .social-main-container {
+        flex-direction: column !important; /* Una columna */
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 20px !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 10px !important;
     }
 
-    /* Overlay siempre visible, solo texto */
-    .social-preview .insta-overlay,
-    .social-preview .tiktok-overlay {
+    /* Contenedores de las previews */
+    .social-preview.tiktok-preview,
+    .social-preview.insta-preview {
+        width: 100% !important;   /* Ocupa todo el ancho del móvil */
+        height: auto !important;  /* Se ajusta automáticamente a la imagen */
+        border-radius: 15px !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+
+    /* Imagen dentro de la preview */
+    .social-preview img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important; /* Mantiene proporción, no se corta */
+        display: block;
+        border-radius: 15px !important;
+    }
+
+    /* Overlay siempre visible sobre la imagen */
+    .insta-overlay,
+    .tiktok-overlay {
         position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
+        inset: 0; /* cubre toda la imagen */
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
-        color: #fff; /* Texto blanco */
+        align-items: center;
+        color: #fff !important;
         font-weight: bold;
-        text-align: center;
-        gap: 5px;
-        z-index: 2;
-        opacity: 1 !important;
-        background: none !important;  /* Eliminamos cualquier fondo */
-        padding: 0 !important;        /* Sin padding extra */
-        border: none !important;      /* Sin borde */
-        font-size: 0.9rem;
-        pointer-events: none;         /* Para que no bloquee el clic en el enlace */   /* Sin fondo */       /* Sin borde */
-        box-shadow: none !important;   /* Sin sombra */     /* Sin padding */
-        width: auto !important;        /* Ajusta al contenido */
-        height: auto !important;
-        
+        font-size: 0.9rem !important;
+        gap: 8px !important;
+        background: rgba(0,0,0,0.2) !important; /* degradado muy suave */
+        opacity: 1 !important; /* siempre visible en móvil */
+        pointer-events: none;   /* no bloquea clicks */
     }
 
-        /* Ajuste de las previews para que no se corten las imágenes */
-        .social-preview.tiktok-preview,
-        .social-preview.insta-preview {
-            height: auto !important;       /* El contenedor crece según la imagen */
-        }
-    
-        .social-preview.tiktok-preview img,
-        .social-preview.insta-preview img {
-            object-fit: contain !important; /* Ajusta la imagen completa */
-            width: 100% !important;         /* Ocupa todo el ancho */
-            height: auto !important;        /* La altura se ajusta proporcionalmente */
-        }
-
-
-    /* Ajuste de icono */
-    .social-preview i {
-        font-size: 1.2rem; /* un poco más pequeño y elegante */
+    /* Ajuste de iconos dentro del overlay */
+    .insta-overlay i,
+    .tiktok-overlay i {
+        font-size: 1.5rem !important;
     }
 
-    
-    /* Aseguramos que el enlace no tenga estilo extraño */
-    .social-preview a {
-        display: block;
-        background: none !important;
-        border: none !important;
-        padding: 0 !important;
-        text-decoration: none !important;
-    }
-    
-    .social-preview img {
-    border: none !important;
-        box-shadow: none !important;
-        border-radius: 0 !important;
-        width: 100%;
-        height: auto;
-        object-fit: cover;
+    /* Botones de redes sociales (si los tienes) */
+    .social-btn {
+        width: 90% !important;
+        max-width: 250px !important;
+        font-size: 0.85rem !important;
+        padding: 12px !important;
+        margin-bottom: 10px !important;
     }
 
-    .social-preview.tiktok-preview img {
-        object-fit: cover;  /* asegura recorte correcto */
-        width: 100%;
-        height: auto;
+    /* Bloque central de texto */
+    .social-info-center {
+        width: 90% !important;
+        max-width: 300px !important;
+        text-align: center !important;
+        margin: 15px auto !important;
     }
-    
-    .social-preview.tiktok-preview .tiktok-overlay {
-        font-size: 0.9rem;
-        gap: 5px;
-        color: #fff;
-        text-align: center;
-    }
+
 
     
 }
