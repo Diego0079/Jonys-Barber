@@ -1650,7 +1650,7 @@ header {
     white-space: nowrap !important;
 }
 
-   /* Título Contacto centrado y más grande para móvil */
+    /* Título Contacto centrado y más grande para móvil */
     .contact-section .section-title-contacto {
         font-size: 2.2rem; /* un tamaño adecuado para móviles */
         letter-spacing: 2px;
@@ -1689,7 +1689,45 @@ header {
         padding: 10px;
     }
 
-   
+    .hours-list li {
+        font-size: 0.85rem; /* más pequeño */
+        padding: 10px 0;    /* más espacio vertical */
+    }
+
+    .hours-list li span {
+        display: inline-block;
+    }
+
+
+    #sobre-nosotros {
+        flex-direction: column; /* Texto arriba, foto abajo */
+        gap: 30px;
+        padding: 40px 5%;
+    }
+
+    #sobre-nosotros img {
+        width: 100%;
+        height: auto; /* Mantiene proporción */
+        max-width: 400px; /* No se pase del contenedor */
+        border-radius: 10px;
+        border: 1px solid var(--primary-color);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        margin: 0 auto; /* centra la imagen */
+    }
+
+    #sobre-nosotros h2 {
+        font-size: 2rem; /* Ajusta tamaño del título */
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    #sobre-nosotros p {
+        font-size: 1rem;
+        text-align: center;
+        color: #ccc;
+    }
+
+
 }
 
 
@@ -1725,7 +1763,6 @@ html, body {
 [data-aos="fade-left"], [data-aos="fade-right"] {
     max-width: 100% !important;
 }
-
 
 
 
