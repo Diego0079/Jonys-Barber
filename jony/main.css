@@ -1613,10 +1613,19 @@ h2 {
 
 /* 1. Header en una sola fila */
 header {
-    padding: 10px 5px !important;
-    height: auto !important;
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;   /* importante */
+    padding: 10px 5%;
+    z-index: 999;  /* encima de todo */
+    background: rgba(17,17,17,0.95); /* fondo para que no se vea el contenido debajo */
+    header {
+        transition: all 0.2s ease-in-out;
+    }
+    
 }
+
 
 
 /* 1. Aseguramos que el contenedor no tenga márgenes internos grandes */
