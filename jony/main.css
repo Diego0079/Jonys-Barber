@@ -1637,6 +1637,12 @@ header {
     pointer-events: none;
 }
 
+.social-preview .insta-overlay,
+.social-preview .tiktok-overlay {
+    text-shadow: 0 0 3px rgba(0,0,0,0.7),
+                 0 0 6px rgba(0,0,0,0.5);
+}
+
 
 
 /* 1. Aseguramos que el contenedor no tenga márgenes internos grandes */
