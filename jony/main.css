@@ -1,0 +1,1820 @@
+/* ============================================================
+   1. ESTRUCTURA Y RESET GLOBAL
+   ============================================================ */
+   html {
+    /* Reserva el espacio de la barra para evitar saltos de contenido */
+    scrollbar-gutter: stable;
+    background-color: #0b0b0b !important;
+    /* Evita que la página rebote al llegar al tope superior */
+    overscroll-behavior-y: contain;
+    /* Evita saltos visuales al cambiar de tamaño la barra de Safari */
+    height: -webkit-fill-available;
+    scroll-behavior: smooth;
+}
+
+body {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden !important; /* Evita el scroll horizontal */
+    line-height: 1.6;
+    background-color: #0b0b0b !important;
+    color: #ffffff !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; /* Fluidez para iPhone */
+    -overflow-scrolling: touch; /* Para navegadores modernos */
+    /* Mejora la fluidez y evita tirones */
+    /* Ajuste de altura para iOS */
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+
+#home {
+    overscroll-behavior: none;
+}
+
+#welcome-screen {
+    display: none !important;
+}
+
+
+/* ============================================================
+   2. OCULTAR SCROLLBAR (Cross-Browser)
+   ============================================================ */
+
+/* Chrome, Safari, Edge y Opera */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#welcome-screen::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Firefox, IE y Edge Antiguo */
+html, body {
+    scrollbar-width: none !important;      /* Firefox */
+    -ms-overflow-style: none !important;   /* IE/Edge */
+    scrollbar-gutter: auto !important;
+    overscroll-behavior-y: contain; /* evita el rebote vertical */
+
+}
+
+/* ============================================================
+   3. TIPOGRAFÍA Y ESTILO DE TEXTO
+   ============================================================ */
+body, p, span, li, a {
+    font-family: var(--body-font, 'Montserrat', sans-serif); /* Fallback incluido */
+    font-weight: 300; /* Texto fino y elegante */
+}
+
+/* Evitar que variables inexistentes rompan el diseño */
+:root {
+    --text-light: #ffffff;
+    --body-font: 'Montserrat', sans-serif;
+    --primary-color: #ffffff; /* Color dorado para títulos y acentos */
+    --gray: #1a1a1a; /* Fondo gris oscuro para secciones */
+    --bg-dark: #0b0b0b; /* Fondo muy oscuro */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+/* Menú de Navegación con fuente Gótica */
+.navbar a, 
+.nav-link, 
+.menu-item a,
+header nav ul li a {
+    font-family: 'Pirata One', cursive !important;
+    font-size: 1.5rem; /* Un poco más grande para que se lea bien */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffffff !important; /* Blanco puro */
+    transition: 0.3s;
+}
+
+/* Efecto al pasar el ratón por el menú */
+.navbar a:hover, 
+.nav-link:hover,
+header nav ul li a:hover {
+    color: #cccccc !important; /* Gris claro al pasar el ratón */
+    transform: scale(1.1); /* Crece un poquito */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Brillo blanco */
+}
+
+
+
+/* Para las letras gigantes del fondo de la sección equipo */
+#equipo::before, #equipo::after {
+    font-family: 'Pirata One', system-ui !important;
+    letter-spacing: 5px;
+}
+
+
+/* Header */
+header {
+    background: rgba(0,0,0,0.95);
+    padding: 1.2rem 5%;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--primary-color);
+    transition: 0.4s;
+}
+
+header.sticky { padding: 0.7rem 5%; background: #000; }
+
+.logo { color: var(--primary-color); font-size: 1.8rem; font-weight: bold; letter-spacing: 2px; }
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Hero Section con la foto real de Jony's Barber */
+#home {
+    height: 100vh;
+    /* Ajustamos el degradado para que el centro sea más claro y se vea mejor la foto */
+    background: linear-gradient(rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%), 
+                url('https://d375139ucebi94.cloudfront.net/region2/es/115858/biz_photo/383670cc487f451c8447e41c714189-jonys-barber-biz-photo-7c9fb0dac9ac4cb880a8ecf7449ba6-booksy.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#home::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Añade una textura sutil */
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.hero-content h1 { 
+    font-size: 5rem; 
+    color: var(--primary-color); 
+    text-shadow: 2px 4px 10px rgba(0,0,0,0.8);
+}
+
+.btn-reserve {
+    display: inline-block;
+    background: #ffffff;
+    color: #000;
+    padding: 15px 35px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.btn-reserve:hover { transform: scale(1.05); background: #fff; }
+
+/* Servicios */
+#servicios { padding: 100px 10%; background: var(--gray); }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+.service-card {
+    background: var(--bg-dark);
+    padding: 40px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* EFECTO AL PASAR EL RATÓN: Crece y se ilumina */
+.service-card:hover {
+    /* El borde se vuelve blanco puro */
+    border-color: #ffffff !important; 
+    
+    /* AQUÍ ESTÁ EL CAMBIO: Sube 10px Y crece un 5% */
+    transform: translateY(-10px) scale(1.05); 
+    
+    /* Sombra más pronunciada y con un toque blanco para dar "efecto glow" */
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.15);
+    
+    /* Cambiamos el fondo ligeramente para destacar más */
+    background: #1a1a1a; 
+}
+
+/* Aseguramos que el icono también se ponga blanco al pasar el ratón */
+.service-card:hover i {
+    color: #ffffff !important;
+    transition: 0.3s;
+}
+
+
+/* BOTÓN FLOTANTE (WhatsApp / Booksy) */
+.booksy-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    /* Usamos blanco puro ya que cambiaste el dorado */
+    background-color: #000000; 
+    color: #000000 !important; /* Texto negro siempre */
+    border-radius: 50px;
+    padding: 15px 25px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    /* Sombra blanca suave para que destaque en el fondo oscuro */
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+    border: 2px solid #ffffff;
+    /* Transición suave y elástica */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* EFECTO HOVER */
+.booksy-float:hover {
+    transform: translateY(-5px) scale(1.05);
+    background-color: #000000; /* Un gris blanquecino muy sutil al tocarlo */
+    color: #ffffff !important;
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.4);
+}
+
+/* ICONO */
+.booksy-float i {
+    font-size: 1.4rem;
+    color: #ffffff !important;
+}
+
+/* ESTADO OCULTO (Si usas JS para mostrarlo al hacer scroll) */
+.booksy-float.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(50px);
+}
+
+/* --- SECCIÓN CONTACTO --- */
+.contact-section {
+    padding: 80px 5%;
+    background-color: #0b0b0b;
+    color: #fff;
+}
+
+.contact-section .section-title-contacto {
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    /* EFECTO NEÓN */
+    text-shadow:
+    0 0 3px rgba(255, 255, 255, 0.637),
+    0 0 10px rgba(255, 255, 255, 0.63);
+}
+
+
+/* Contenedor principal de tarjetas */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap; /* Para que en móvil bajen a columna */
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 50px auto;
+}
+
+/* --- TARJETAS --- */
+.contact-card {
+    background: rgba(17,17,17,0.9);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #444;
+    backdrop-filter: blur(5px);
+    flex: 1 1 280px; /* Se adapta a pantalla */
+    max-width: 350px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+}
+
+.contact-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- LISTA HORARIOS --- */
+.hours-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hours-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #333;
+    font-size: 0.95rem;
+}
+
+.hours-list li:last-child {
+    border-bottom: none;
+}
+
+.hours-list .highlight {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.hours-list .closed {
+    color: #888;
+}
+
+/* --- CONTACTO DIRECTO --- */
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.contact-link:hover {
+    background: #1a1a1a;
+    transform: translateY(-2px);
+}
+
+.contact-link.whatsapp {
+    background: #0b3d2e;
+    color: #fff;
+}
+
+/* --- UBICACIÓN --- */
+.address {
+    margin-bottom: 12px;
+    line-height: 1.5;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+/* --- MAPA --- */
+.map-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    height: 400px;
+    margin: 0 auto 80px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #444;
+}
+
+.map-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(80%) contrast(1) brightness(0.4); /* OSCURO */
+}
+
+
+/* Estilos del Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    display: none;             /* oculto por defecto */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    overflow-y: auto; /* Permite scroll solo dentro del modal */
+    -webkit-overflow-scrolling: touch; /* Suavidad en iPhone */
+}
+
+
+
+/* Bloqueo del scroll del fondo cuando el modal está abierto */
+html.modal-active {
+    overflow: hidden !important;
+    height: 100% !important;
+}
+
+body.modal-active {
+    overflow: hidden !important;
+    width: 100%;
+    height: 100vh !important;
+    top: 0;
+    left: 0;
+    touch-action: none;     /* evita rebote táctil */
+    position: relative;     /* asegura compatibilidad con iOS */
+    height: 100%;
+}
+
+.modal-content {
+    background-color: var(--gray);
+    margin: 5% auto;
+    padding: 40px;
+    border: 1px solid var(--primary-color);
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-modal {
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #fff;
+}
+
+.modal-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #444;
+}
+
+#modalBody h2 { color: var(--primary-color); margin-bottom: 15px; }
+#modalBody p { font-size: 1.1rem; margin-bottom: 20px; color: #ccc; }
+#modalBody .btn-reserva-card { 
+    display: block;
+    width: 100%;
+    background-color: #ffffff;
+    color: #000;
+    padding: 15px 20px;
+    margin-top: 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+#modalBody .btn-reserva-card:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.02);
+}
+
+
+
+
+.service-card p small {
+    display: block;
+    margin-top: 10px;
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    display: block;
+}
+
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 500px; /* Aumentamos la altura para lucir los degradados verticales */
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #333;
+    transition: all 0.5s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.02);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Contenedor del logo y nombre que permite hacer clic para volver arriba */
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Quita el subrayado del enlace */
+    gap: 12px;
+}
+
+/* El logo en el navbar */
+.nav-logo {
+    height: 50px; /* Tamaño ideal para que no sea gigante */
+    width: 50px;
+    border-radius: 50%; /* Lo hace redondo */
+    border: 1.5px solid var(--primary-color); /* Un fino borde dorado */
+    object-fit: cover;
+    transition: 0.3s ease;
+}
+
+/* Título de la Barra de Navegación */
+.nav-title {
+    font-family: 'Pirata One', cursive !important;
+    font-size: 2rem; /* Tamaño grande para que destaque junto al logo */
+    color: #ffffff !important; /* Blanco puro */
+    letter-spacing: 2px; /* Espaciado elegante */
+    text-transform: uppercase; /* En mayúsculas queda más "marca" */
+    font-weight: normal; /* La fuente ya es gruesa de por sí */
+    
+    /* Alineación vertical por si se queda descolocado respecto al logo */
+    vertical-align: middle;
+    line-height: 1;
+    
+    /* Transición suave para el efecto hover */
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el ratón por encima del título */
+.nav-title:hover {
+    color: #e0e0e0 !important; /* Un gris muy clarito */
+    /* Pequeño brillo blanco estilo neón suave */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+}
+
+
+
+/* Ajuste cuando el menú se encoge al hacer scroll */
+header.sticky .nav-logo {
+    height: 40px;
+    width: 40px;
+}
+
+header.sticky .nav-title {
+    font-size: 1.2rem;
+}
+
+
+
+
+/* Si quieres ser más específico y que solo afecte al precio */
+.price {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none; /* Esto evita que el ratón pueda siquiera interactuar con el texto */
+    cursor: default;
+}
+
+.slider-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    height: 300px;
+}
+
+.review-slide {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.review-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.review-card {
+    background: #2c2c2c;
+    padding: 40px;
+    border-radius: 15px;
+    border-bottom: 4px solid var(--primary-color);
+    text-align: center;
+}
+
+.review-author {
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Controles del Slider: Limpios y sin bordes */
+.slider-controls {
+    text-align: center;
+    margin-top: 20px;
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+}
+
+.slider-controls button {
+    background: transparent; /* Sin fondo */
+    border: none;             /* Quitamos el borde */
+    color: #ffffff;           /* Flechas blancas */
+    padding: 10px;
+    margin: 0 20px;
+    cursor: pointer;
+    font-size: 2rem;          /* Tamaño grande para que se vea bien la flecha */
+    transition: all 0.3s ease;
+    outline: none;            /* Evita el recuadro azul al hacer clic */
+}
+
+/* Efecto al pasar el ratón */
+.slider-controls button:hover {
+    color: rgba(255, 255, 255, 0.6); /* Se vuelve un poco transparente */
+    transform: scale(1.2);           /* Crece ligeramente */
+    background: transparent;          /* Aseguramos que no salga fondo */
+}
+
+/* Tamaño fijo para el logo de Google */
+.google-logo {
+    width: 30px !important;
+    height: auto;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.google-logo-full {
+    width: 100px; /* Tamaño ideal para el logo horizontal */
+    height: auto;
+    margin-bottom: 10px;
+    display: inline-block;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5)); /* Le da un poco de relieve */
+}
+
+/* Aseguramos que las estrellas y el texto mantengan espacio */
+.stars {
+    margin-top: 5px;
+}
+
+.modal-img {
+    width: 100%;
+    max-height: 550px; /* Un poco más alto para apreciar el degradado de color */
+    object-fit: contain; /* Para que la foto se vea entera sin recortes */
+    background: #111; /* Fondo oscuro por si la foto es estrecha */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid var(--primary-color);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    color: white;
+    position: relative;
+}
+
+/* Menú escritorio */
+#nav-menu-desktop {
+    display: flex;
+    gap: 25px;
+}
+
+#nav-menu-desktop a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+
+
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+}
+
+.welcome-content {
+    position: relative;
+    text-align: center;
+    z-index: 10000;
+}
+
+/* El logo ahora tiene un brillo que respira */
+.welcome-logo {
+    width: 200px;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+    transition: filter 0.5s ease;
+}
+
+#unlock-btn {
+    display: block;
+    margin: 0 auto;
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 12px 30px;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+#unlock-btn:hover {
+    background: var(--primary-color);
+    color: #000;
+    box-shadow: 0 0 20px var(--primary-color);
+}
+
+/* Animación de flotar para el logo */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Cuando se desbloquea, la pantalla sube como un telón */
+@keyframes pulse-glow {
+    from { filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4)); }
+    to { filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.9)); }
+}
+
+.screen-unlocked {
+    transform: translateY(-100%) !important;
+    opacity: 1; /* Mantenemos la opacidad para que se vea el telón subir */
+    pointer-events: none;
+}
+
+.logo-wrapper {
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.logo-wrapper:hover {
+    transform: scale(1.05); /* El logo crece un poquito al poner el ratón */
+}
+
+.tap-to-enter {
+    color: #ffffff;
+    font-family: 'Playfair Display', serif; /* O la que uses */
+    letter-spacing: 5px;
+    font-size: 0.7rem;
+    margin-top: 20px;
+    opacity: 0.6;
+    animation: blink 2s infinite ease-in-out; /* El texto parpadea suavemente */
+}       
+
+@keyframes blink {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+.logo-wrapper:hover .welcome-logo {
+    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6));
+}
+
+
+
+/* Arreglar textos que se hayan quedado en negro */
+p, span, li, label {
+    color: #ffffff !important; 
+}
+
+/* Si tienes secciones con fondo blanco de Bootstrap, las volvemos negras */
+.bg-light, .section-white, .container-fluid {
+    background-color: #0b0b0b !important;
+}
+
+/* Asegurar que el navbar sea oscuro */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.95) !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+
+
+/* Ajuste para los enlaces del menú */
+.nav-link {
+    color: #ffffff !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+/* SECCIÓN GALERÍA: Neón Blanco y Reflejo Estable */
+#galeria {
+    width: 100%;
+    padding: 100px 0 180px 0; /* Espacio extra abajo para el reflejo */
+    background-color: #0b0b0b;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Títulos de galería y secciones con efecto neón */
+.titulo-galeria,
+.section-title {
+    width: 100%;
+    text-align: center !important;
+    font-size: 3.5rem;
+    letter-spacing: 4px;
+    margin-bottom: 50px;
+    display: block;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* El contenedor Swiper */
+.swiper {
+    width: 100%;
+    overflow: visible !important; 
+    padding-top: 20px;
+    padding-bottom: 80px;
+}
+
+.swiper-slide {
+    width: 300px !important;
+    height: 400px !important;
+    background: #000;
+    border-radius: 12px;
+    
+    /* REFLEJO PERMANENTE */
+    -webkit-box-reflect: below 2px linear-gradient(transparent, transparent 50%, rgba(255, 255, 255, 0.2));
+    
+    /* Optimización para evitar parpadeos */
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* LAS IMÁGENES: Neón Blanco Permanente */
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    /* Evita el sombreado azul al mantener pulsado */
+    -webkit-user-select: none;  /* Safari */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Estándar */
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    pointer-events: none;
+
+    
+    /* NEÓN BLANCO */
+    border: 2px solid #ffffff !important; 
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 
+                inset 0 0 10px rgba(255, 255, 255, 0.4) !important;
+    
+    transition: all 0.4s ease;
+    backface-visibility: hidden;
+    
+    /* Asegura que el reflejo no se corte */
+    margin-bottom: 100px;
+}
+
+/* EFECTO HOVER: Elevación en lugar de Scale para no romper el reflejo */
+.swiper-slide:hover {
+    transform: translateY(-15px) translateZ(0); /* Sube la foto, el reflejo la sigue */
+}
+
+.swiper-slide:hover img {
+    border-color: #ffffff !important;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 1), 
+                inset 0 0 15px rgba(255, 255, 255, 0.6) !important;
+    filter: brightness(1.2);
+}
+
+
+
+
+/* Contenedores de las flechas: Limpios y transparentes */
+.swiper-button-next, 
+.swiper-button-prev {
+    background: transparent !important;
+    border: none !important;
+    width: 40px !important;
+    height: 40px !important;
+    top: 50% !important;
+    transform: translateY(-50%);
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Eliminamos el icono por defecto de Swiper */
+.swiper-button-next::after, 
+.swiper-button-prev::after {
+    display: none !important;
+}
+
+/* Dibujamos la flecha IZQUIERDA (Solo líneas) */
+.swiper-button-prev::before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    border-left: 3px solid #ffffff;
+    border-bottom: 3px solid #ffffff;
+    transform: rotate(45deg);
+}
+
+/* Dibujamos la flecha DERECHA (Solo líneas) */
+.swiper-button-next::before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    border-right: 3px solid #ffffff;
+    border-top: 3px solid #ffffff;
+    transform: rotate(45deg);
+}
+
+/* Posición en los extremos */
+.swiper-button-prev { left: 10px !important; }
+.swiper-button-next { right: 10px !important; }
+
+/* Efecto Hover: La flecha brilla y crece un poco */
+.swiper-button-next:hover, 
+.swiper-button-prev:hover {
+    transform: translateY(-50%) scale(1.2);
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+}
+
+
+/* --- Personalización de Paginación (Puntitos) --- */
+/* El color de los puntos inactivos */
+.swiper-pagination-bullet {
+    background: #ffffff !important;
+    opacity: 0.3;
+    width: 10px;
+    height: 10px;
+}
+
+/* El color del punto activo */
+.swiper-pagination-bullet-active {
+    background: #ffffff !important; /* Dorado */
+    opacity: 1;
+    width: 25px; /* Lo hacemos más alargado para que se note cuál es */
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+/* Bajamos un poco la paginación para que no pise las fotos */
+.swiper-pagination {
+    bottom: 0px !important;
+}
+
+
+/* Ajustamos el contenedor para que quepa el reflejo sin cortarse */
+.mySwiper {
+    padding-bottom: 120px !important; 
+}
+
+/* Foto activa (la del centro) brilla un poco más automáticamente */
+.swiper-slide-active img {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.9) !important;
+}
+
+#equipo {
+    position: relative;
+    padding: 120px 0; /* Más espacio arriba y abajo */
+    background-color: #0b0b0b;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Efecto neón compartido para letras de fondo */
+#equipo::before,
+#equipo::after {
+    position: absolute;
+    top: 50%;
+    font-size: 9vw; 
+    font-family: 'Pirata One', cursive !important;
+    color: rgba(255, 255, 255, 0.1);
+    text-shadow: 
+        0 0 3px rgba(255, 255, 255, 0.637),
+        0 0 10px rgba(255, 255, 255, 0.63);
+    z-index: -1;
+    white-space: nowrap;
+    letter-spacing: 5px;
+}
+
+/* Letras de Fondo: JONY'S con Iluminación Suave */
+#equipo::before {
+    content: "JONY'S";
+    left: 12%; 
+    transform: translateY(-50%) rotate(-12deg); 
+}
+
+/* Letras de Fondo: BARBER con Iluminación Suave */
+#equipo::after {
+    content: "BARBER";
+    right: 12%; 
+    transform: translateY(-50%) rotate(12deg); 
+}
+
+/* La Tarjeta (ajuste para que destaque sobre el fondo) */
+.tarjeta-barbero {
+    background: #1a1a1a;
+    border: 1px solid #ffffff;
+    border-radius: 12px;
+    overflow: hidden; /* Para que la foto respete las esquinas redondeadas */
+    transition: transform 0.4s ease;
+    max-width: 350px; /* Controlamos el ancho de la tarjeta */
+    margin: 0 auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.tarjeta-barbero:hover {
+    transform: translateY(-15px);
+    border-color: #fff;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
+}
+
+/* Contenedor de la foto rectangular */
+.foto-contenedor {
+    width: 100%;
+    height: 380px; /* Altura rectangular elegante */
+    overflow: hidden;
+}
+
+.foto-contenedor img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la foto sin deformarla */
+    transition: transform 0.5s ease;
+}
+
+.tarjeta-barbero:hover .foto-contenedor img {
+    transform: scale(1.1); /* Zoom suave al pasar el ratón */
+}
+
+/* Parte del texto debajo de la foto */
+.info-barbero {
+    padding: 25px;
+    text-align: center;
+}
+
+.info-barbero h3 {
+    font-family: 'Pirata One', cursive !important;
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.puesto {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.separador-dorado {
+    border: 0;
+    border-top: 2px solid #ffffff;
+    width: 50px;
+    margin: 0 auto 15px;
+}
+
+.info-barbero p {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.redes-barbero a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px; /* espacio entre el icono y el texto */
+    color: #fff; /* color del texto */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.redes-barbero a:hover {
+    color: #ffffff; /* un pequeño efecto al pasar el ratón */
+} 
+
+/* Forzamos la fuente del logo en todos los encabezados */
+h1, h2, h3, h4, h5, h6,
+.titulo-galeria, 
+.section-title, 
+.nombre-jony,
+#equipo h2 {
+    font-family: 'Pirata One', cursive !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    color: #ffffff !important;
+    font-weight: 400;
+}
+
+/* Resaltar los títulos principales en dorado */
+h1, h2, h3, .primary-text {
+    color: var(--primary-color) !important;
+}
+
+/* Ajuste específico para los títulos de sección para que no se peguen */
+h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
+
+.main-footer {
+    background: #000;
+    color: #fff;
+    padding: 60px 5% 20px 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinea todo al centro verticalmente */
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+/* IZQUIERDA */
+.footer-left {
+    flex: 1;
+    text-align: left;
+    min-width: 250px;
+}
+
+.footer-left h3 {
+    font-family: 'Pirata One', cursive;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.footer-left p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.footer-socials {
+    margin-top: 20px;
+}
+
+.footer-socials a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 20px;
+    transition: 0.3s;
+}
+
+.footer-socials a:hover {
+    color: #555; /* Gris al pasar el ratón */
+}
+
+/* CENTRO */
+.footer-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.footer-logo {
+    height: 150px; /* Tamaño grande */
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.1);
+}
+
+/* DERECHA */
+.footer-right {
+    flex: 1;
+    text-align: right;
+    min-width: 250px;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column; /* Uno debajo de otro */
+    gap: 10px;
+}
+
+.footer-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.footer-nav a:hover {
+    padding-right: 10px; /* Pequeño efecto de movimiento */
+    color: #ccc;
+}
+
+/* COPYRIGHT */
+.footer-bottom {
+    margin-top: 50px;
+    text-align: center;
+    border-top: 1px solid #222;
+    padding-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 0.75rem;
+    color: #555;
+}
+
+/* --- SECCIÓN SOCIAL --- */
+.social-section {
+    padding: 80px 5%;
+    background-color: #0b0b0b;
+}
+
+.social-main-container {
+    display: flex;
+    flex-direction: row; /* Fuerza línea horizontal */
+    align-items: center; /* Centra verticalmente los 3 elementos */
+    justify-content: center; /* Los agrupa al centro de la web */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Previews laterales */
+.social-preview {
+    flex: 0 0 300px; /* No crecen, no encogen, siempre 300px */
+    height: 530px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000;
+}
+
+
+.social-preview.tiktok-preview {
+    flex: none; /* Evita que se estire */
+    width: 300px; 
+    height: 530px; 
+    border-radius: 20px;
+    overflow: hidden;
+    background: #161616;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+/* Aplicamos el mismo tamaño que al TikTok para que sean iguales */
+.social-preview.insta-preview {
+    flex: none; /* Evita que se estire */
+    width: 300px; 
+    height: 530px; 
+    border-radius: 20px;
+    overflow: hidden;
+    background: #161616;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+
+
+/* Estilo para Instagram */
+.insta-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.insta-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    opacity: 0; transition: 0.3s;
+}
+
+
+
+.insta-preview:hover .insta-overlay { opacity: 1; }
+.insta-preview:hover img { transform: scale(1.1); }
+.tiktok-preview:hover img { transform: scale(1.1); }
+
+/* Centro */
+.social-info-center {
+    flex: 1; /* Ocupa el espacio restante */
+    max-width: 300px; /* Para que el texto no se estire demasiado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+}
+
+.social-btn {
+    width: 100%;
+    max-width: 250px;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.social-btn.tk { background: #000; border: 1px solid #ff0050; }
+.social-btn.ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-btn:hover { transform: scale(1.05); }
+
+.social-text {
+    margin-top: 20px;
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.social-preview a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.social-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.tiktok-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tiktok-preview:hover .tiktok-overlay {
+    opacity: 1;
+}
+
+
+  
+
+
+/* ============================================================
+   ORGANIZACIÓN DE QUERIES (TABLET & MOBILE)
+   ============================================================ */
+
+/* --- TABLETS (Max-width: 992px) --- */
+@media (max-width: 992px) {
+    #equipo::before, #equipo::after {
+        display: none; /* Quitamos decoraciones que estorban en tablets */
+    }
+}
+
+/* --- MÓVILES (Max-width: 768px) --- */
+@media (max-width: 768px) {
+    
+    /* 1. HOME / HERO */
+    #home .hero-content {
+        padding-top: 100px !important;
+    }
+    .hero-logo {
+        width: 120px !important;
+        margin-bottom: 20px !important;
+    }
+    .hero-content h1 {
+        font-size: 2.8rem !important;
+    }
+
+    /* 2. SERVICIOS (Diseño compacto en 2 columnas) */
+    #servicios { padding: 40px 5% !important; }
+    .services-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+    }
+    .service-card {
+        min-height: 140px !important;
+        padding: 15px 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    }
+    .service-card i {
+        font-size: 1.5rem !important;
+        margin-bottom: 8px !important;
+    }
+    .service-card h3 {
+        font-size: 0.95rem !important;
+        text-align: center !important;
+    }
+    .service-card .price {
+        font-size: 1rem !important;
+    }
+    .service-card .btn-reserve { display: none !important; }
+
+    /* 3. REVIEWS (Reseñas de Google) - NUEVO AJUSTE */
+    .review-card {
+        padding: 25px 15px !important; /* Menos espacio interno */
+        width: 95% !important;        /* Casi todo el ancho */
+        margin: 0 auto !important;
+    }
+    .google-logo-full {
+        width: 80px !important;      /* Logo Google más pequeño */
+    }
+    .review-card p {
+        font-size: 1rem !important;  /* Texto legible pero compacto */
+        line-height: 1.4 !important;
+    }
+    .slider-controls button {
+        padding: 12px 20px !important; /* Botones más fáciles de tocar */
+        margin: 0 10px !important;
+    }
+
+    /* 4. MODAL (Botón fino y pequeño) */
+    .modal-content {
+        width: 85% !important;
+        margin: 20% auto !important;
+    }
+    #modalServicio .btn-reserve {
+        display: block !important;
+        padding: 8px 20px !important;
+        font-size: 0.85rem !important;
+        width: auto !important;
+        margin: 15px auto 0 !important;
+    }
+
+    /* 5. GALERÍA Y MAPA */
+    .titulo-galeria { font-size: 2.2rem; }
+    .swiper-slide { width: 260px !important; height: 350px !important; }
+    .map-container-dark, .map-container-dark iframe {
+        height: 450px !important;
+    }
+
+    /* --- AJUSTE FOOTER EN MÓVIL --- */
+    .footer-right {
+        text-align: center !important; /* Centra el bloque */
+        flex: none !important;
+        width: 100% !important;
+        margin-top: 30px !important; /* Separación con lo de arriba */
+    }
+
+    .footer-nav {
+        align-items: center !important; /* Centra los enlaces */
+        gap: 15px !important; /* Un poco más de espacio para clicar mejor */
+    }
+
+    .footer-nav a:hover {
+        padding-right: 0 !important; /* Quitamos el efecto lateral en móvil */
+        transform: scale(1.05);      /* Un efecto más natural para pantallas táctiles */
+    }
+
+
+
+
+
+/* 1. Header en una sola fila */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;   /* importante */
+    padding: 10px 5%;
+    z-index: 999;  /* encima de todo */
+    background: rgba(17,17,17,0.95); /* fondo para que no se vea el contenido debajo */
+    header {
+        transition: all 0.2s ease-in-out;
+    }
+    
+}
+
+
+
+
+
+
+
+/* 1. Aseguramos que el contenedor no tenga márgenes internos grandes */
+.nav-container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 5px 10px !important; /* Espacio lateral mínimo */
+    width: 100% !important;
+}
+
+/* 2. Ocultar el texto del nombre (ya lo tenemos) */
+.nav-title {
+    display: none !important;
+}
+
+/* 3. Logo muy sutil */
+.nav-logo {
+    height: 28px !important;
+    width: auto !important;
+}
+
+/* 4. Menú horizontal ultra-compacto */
+#nav-menu-desktop {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 6px !important; /* Espacio mínimo entre enlaces */
+    margin-left: auto !important;
+}
+
+/* 5. Letras más pequeñas */
+#nav-menu-desktop a {
+    font-size: 0.58rem !important; /* Fuente reducida */
+    font-weight: 500 !important;
+    letter-spacing: -0.2px !important; /* Juntamos un poco las letras */
+    text-transform: uppercase;
+    padding: 0 !important;
+    white-space: nowrap !important;
+}
+
+    /* Título Contacto centrado y más grande para móvil */
+    .contact-section .section-title-contacto {
+        font-size: 2.2rem; /* un tamaño adecuado para móviles */
+        letter-spacing: 2px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    /* Contenedor principal de tarjetas pasa a columna */
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px; /* menos espacio entre tarjetas */
+        padding: 0 10px; /* algo de padding lateral */
+    }
+
+    /* Tarjetas se adaptan a ancho completo de móvil */
+    .contact-card {
+        flex: 1 1 100%;
+        max-width: 350px; /* control de ancho */
+        padding: 20px;
+    }
+
+    /* Ajuste de texto y links dentro de la tarjeta */
+    .contact-card h3 {
+        font-size: 1.2rem;
+        gap: 8px;
+    }
+
+    .hours-list li {
+        font-size: 0.9rem;
+        padding: 6px 0;
+    }
+
+    .contact-link {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .hours-list li {
+        font-size: 0.85rem; /* más pequeño */
+        padding: 10px 0;    /* más espacio vertical */
+    }
+
+    .hours-list li span {
+        display: inline-block;
+    }
+
+
+    #sobre-nosotros {
+        flex-direction: column; /* texto arriba, imagen abajo */
+        align-items: center;
+        gap: 25px;
+        padding: 40px 5%;
+    }
+
+    #sobre-nosotros div {
+        width: 100%;
+        max-width: 400px; /* reducimos el ancho máximo */
+    }
+
+    #sobre-nosotros img {
+        width: 100%;   /* ocupa todo el div padre */
+        height: auto;  /* mantiene proporción */
+        max-height: 250px; /* límite máximo de altura */
+        display: block;
+        margin: 0 auto; /* centra la imagen */
+        border-radius: 10px;
+        border: 1px solid var(--primary-color);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        object-fit: cover; /* recorta suavemente si hace falta */
+    }
+
+    #sobre-nosotros h2 {
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    #sobre-nosotros p {
+        font-size: 0.95rem;
+        text-align: center;
+        color: #ccc;
+    }
+
+    .social-main-container {
+        flex-direction: column !important; /* Una columna */
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 20px !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 10px !important;
+    }
+
+    /* Contenedores de las previews */
+    .social-preview.tiktok-preview,
+    .social-preview.insta-preview {
+        width: 100% !important;   /* Ocupa todo el ancho del móvil */
+        height: auto !important;  /* Se ajusta automáticamente a la imagen */
+        border-radius: 15px !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+
+    /* Imagen dentro de la preview */
+    .social-preview img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important; /* Mantiene proporción, no se corta */
+        display: block;
+        border-radius: 15px !important;
+    }
+
+    /* Overlay siempre visible sobre la imagen */
+    .insta-overlay,
+    .tiktok-overlay {
+        position: absolute;
+        inset: 0; /* cubre toda la imagen */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #fff !important;
+        font-weight: bold;
+        font-size: 0.9rem !important;
+        gap: 8px !important;
+        background: rgba(0,0,0,0.2) !important; /* degradado muy suave */
+        opacity: 1 !important; /* siempre visible en móvil */
+        pointer-events: none;   /* no bloquea clicks */
+    }
+
+    /* Ajuste de iconos dentro del overlay */
+    .insta-overlay i,
+    .tiktok-overlay i {
+        font-size: 1.5rem !important;
+    }
+
+    /* Botones de redes sociales (si los tienes) */
+    .social-btn {
+        width: 90% !important;
+        max-width: 250px !important;
+        font-size: 0.85rem !important;
+        padding: 12px !important;
+        margin-bottom: 10px !important;
+    }
+
+    /* Bloque central de texto */
+    .social-info-center {
+        width: 90% !important;
+        max-width: 300px !important;
+        text-align: center !important;
+        margin: 15px auto !important;
+    }
+
+
+    
+}
+
+
+
+
+
+
+
+/* --- MÓVILES PEQUEÑOS (Max-width: 600px) --- */
+@media (max-width: 600px) {
+    .booksy-float {
+        padding: 15px;
+        border-radius: 50%;
+        bottom: 20px;
+        right: 20px;
+    }
+    .booksy-float span {
+        display: none; /* Solo queda el icono circular */
+    }
+    .nav-title {
+        display: none; /* Solo queda el logo en la barra superior */
+    }
+
+    
+}
+
+/* {
+    outline: 1px solid red !important;
+}
+    */
+
+html, body {
+    overflow-x: hidden !important;
+}
+[data-aos="fade-left"], [data-aos="fade-right"] {
+    max-width: 100% !important;
+}
+
+#welcome-screen,
+.welcome-content,
+.welcome-logo,
+.tap-to-enter,
+#unlock-btn {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    width: 0 !important;
+}
+
+
+
+
+
