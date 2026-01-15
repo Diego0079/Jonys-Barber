@@ -36,6 +36,11 @@ body {
     overscroll-behavior: none;
 }
 
+#welcome-screen {
+    display: none !important;
+}
+
+
 /* ============================================================
    2. OCULTAR SCROLLBAR (Cross-Browser)
    ============================================================ */
@@ -1637,11 +1642,7 @@ header {
     pointer-events: none;
 }
 
-.social-preview .insta-overlay,
-.social-preview .tiktok-overlay {
-    text-shadow: 0 0 3px rgba(0,0,0,0.7),
-                 0 0 6px rgba(0,0,0,0.5);
-}
+
 
 
 
