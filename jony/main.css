@@ -1650,7 +1650,46 @@ header {
     white-space: nowrap !important;
 }
 
+   /* Título Contacto centrado y más grande para móvil */
+    .contact-section .section-title-contacto {
+        font-size: 2.2rem; /* un tamaño adecuado para móviles */
+        letter-spacing: 2px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
 
+    /* Contenedor principal de tarjetas pasa a columna */
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px; /* menos espacio entre tarjetas */
+        padding: 0 10px; /* algo de padding lateral */
+    }
+
+    /* Tarjetas se adaptan a ancho completo de móvil */
+    .contact-card {
+        flex: 1 1 100%;
+        max-width: 350px; /* control de ancho */
+        padding: 20px;
+    }
+
+    /* Ajuste de texto y links dentro de la tarjeta */
+    .contact-card h3 {
+        font-size: 1.2rem;
+        gap: 8px;
+    }
+
+    .hours-list li {
+        font-size: 0.9rem;
+        padding: 6px 0;
+    }
+
+    .contact-link {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+   
 }
 
 
@@ -1686,6 +1725,7 @@ html, body {
 [data-aos="fade-left"], [data-aos="fade-right"] {
     max-width: 100% !important;
 }
+
 
 
 
