@@ -1553,17 +1553,15 @@ h2 {
         overflow: hidden !important; 
     }
 
-    /* 2. El Vídeo y la Imagen: Super pequeños */
-    .social-preview.tiktok-preview,
-    .social-preview.insta-preview {
-        width: 60vw !important; /* Solo el 60% del ancho de la pantalla */
-        min-width: 200px !important; /* Tamaño mínimo de seguridad */
-        max-width: 250px !important; /* Tamaño máximo estricto */
-        height: 100vw !important; /* Altura proporcional */
-        max-height: 380px !important;
-        margin: 10px 0 !important; /* Solo margen arriba y abajo */
-        flex: none !important;
-        border: 1px solid rgba(255,255,255,0.1) !important;
+    .social-preview::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0.1)); /* degradado suave */
+        z-index: 1;
+        pointer-events: none; /* no bloquea clicks */
     }
 
     /* 3. Bloque central: Estrecho */
@@ -1588,12 +1586,34 @@ h2 {
         margin-top: 5px !important;
     }
 
-    /* 5. Ajuste forzado del video local */
-    .video-local {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-    }
+
+        /* Texto e iconos siempre visibles */
+        .insta-overlay,
+        .tiktok-overlay {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            gap: 10px;
+            z-index: 2; /* encima del overlay */
+            opacity: 1 !important; /* siempre visible en móvil */
+            transition: none; /* sin hover para móviles */
+            font-size: 0.9rem;
+        }
+
+        .social-preview i {
+            font-size: 1.5rem;
+        }
+
+        .social-preview:hover img {
+            transform: scale(1.05); /* sutil efecto zoom si quieren */
+        }
 
     .btn-reserva-card {
         width: 100%; /* El botón ocupa todo el ancho de la tarjeta */
@@ -1699,7 +1719,7 @@ header {
     }
 
 
-   #sobre-nosotros {
+    #sobre-nosotros {
         flex-direction: column; /* texto arriba, imagen abajo */
         align-items: center;
         gap: 25px;
@@ -1734,74 +1754,10 @@ header {
         text-align: center;
         color: #ccc;
     }
-
-       .social-main-container {
-        flex-direction: column; /* tarjetas apiladas */
-        align-items: center;
-        gap: 20px;
-    }
-
-    /* Previews laterales */
-    .social-preview {
-        width: 90%; /* ocupa casi todo el ancho */
-        max-width: 350px;
-        height: 400px; /* altura proporcional para móvil */
-        position: relative;
-        overflow: hidden;
-        border-radius: 15px;
-        border: 1px solid rgba(255,255,255,0.1);
-        background: #111;
-    }
-
-    /* Imagen de fondo */
-    .social-preview img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.3s ease;
-    }
-
-    /* Overlay oscuro y suave que siempre se ve */
-    .social-preview::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0.1)); /* degradado suave */
-        z-index: 1;
-        pointer-events: none; /* no bloquea clicks */
-    }
-
-    /* Texto e iconos siempre visibles */
-    .insta-overlay,
-    .tiktok-overlay {
-        position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-weight: bold;
-        text-align: center;
-        gap: 10px;
-        z-index: 2; /* encima del overlay */
-        opacity: 1 !important; /* siempre visible en móvil */
-        transition: none; /* sin hover para móviles */
-        font-size: 0.9rem;
-    }
-
-    .social-preview:hover img {
-        transform: scale(1.05); /* sutil efecto zoom si quieren */
-    }
-
-    .social-preview i {
-        font-size: 1.5rem;
-    }
+    
 }
+
+
 
 
 
@@ -1836,10 +1792,6 @@ html, body {
 [data-aos="fade-left"], [data-aos="fade-right"] {
     max-width: 100% !important;
 }
-
-
-
-
 
 
 
