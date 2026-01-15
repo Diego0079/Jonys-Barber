@@ -1727,6 +1727,17 @@ header {
         color: #ccc;
     }
 
+       #sobre-nosotros img {
+        width: 100%;
+        height: auto; /* Mantiene la proporción original */
+        max-width: 500px; /* Para no exceder contenedor */
+        display: block;
+        margin: 0 auto;
+        border-radius: 10px;
+        border: 1px solid var(--primary-color);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
 
 }
 
@@ -1763,6 +1774,7 @@ html, body {
 [data-aos="fade-left"], [data-aos="fade-right"] {
     max-width: 100% !important;
 }
+
 
 
 
