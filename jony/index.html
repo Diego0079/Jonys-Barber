@@ -198,53 +198,71 @@
         </div>
     </section>
 
-    <section id="contacto" data-aos="fade-up">
-        <div class="info-col" data-aos="fade-right">
-            <h2 class="section-title" style="text-align: left; margin-bottom: 30px; color: #fff;">Contacto</h2>
-            
-            <div style="margin-bottom: 25px;">
-                <p style="font-size: 1.1rem; margin-bottom: 15px; color: #fff;">
-                    <i class="fas fa-map-marker-alt" style="color: var(--primary-color); margin-right: 10px;"></i> 
-                    C. Reina Adosinda, 3, 33120 Pravia, Asturias
-                </p>
-                <p style="font-size: 1.1rem; color: #fff;">
-                    <i class="fas fa-phone" style="color: var(--primary-color); margin-right: 10px;"></i> 
-                    +34 636 73 71 85
-                </p>
-            </div>
+    <section id="contacto" class="contact-section" data-aos="fade-up">
+        <h2 class="section-title-contacto">Contacto</h2>
     
-            <div style="background: rgba(17, 17, 17, 0.9); padding: 25px; border-radius: 15px; border: 1px solid #444; backdrop-filter: blur(5px);">
-                <h3 style="color: var(--primary-color); margin-bottom: 15px; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">
+        <div class="contact-container">
+    
+            <!-- BLOQUE HORARIOS -->
+            <div class="contact-card">
+                <h3>
                     <i class="far fa-clock"></i> Horarios
                 </h3>
+    
                 <ul class="hours-list">
-                    <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #333; color: #fff;">
+                    <li>
                         <span>Lunes - Viernes</span>
-                        <span style="color: var(--primary-color);">09:30–13:30, 16:00–20:30</span>
+                        <span class="highlight">09:30 – 13:30 · 16:00 – 20:30</span>
                     </li>
-                    <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #333; color: #fff;">
+                    <li>
                         <span>Sábados</span>
-                        <span style="color: #888;">Cerrado</span>
+                        <span class="closed">Cerrado</span>
                     </li>
-                    <li style="display: flex; justify-content: space-between; padding: 8px 0; color: #fff;">
+                    <li>
                         <span>Domingos</span>
-                        <span style="color: #888;">Cerrado</span>
+                        <span class="closed">Cerrado</span>
                     </li>
                 </ul>
             </div>
-        </div>
     
+            <!-- BLOQUE CONTACTO DIRECTO -->
+            <div class="contact-card">
+                <h3>
+                    <i class="fas fa-phone-alt"></i> Contacto
+                </h3>
+    
+                <a href="https://booksy.com/es-es/115858_jonys-barber_barberia_55008_pravia" class="contact-link">
+                    <i class="fas fa-calendar-check"></i> Reserva Aqui
+                </a>   
 
-        <div class="map-col" data-aos="fade-left">
-            <div class="map-container-dark">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1447.3785438164061!2d-6.112655868036007!3d43.48653952542112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd36a37067583eb7%3A0xdd8811e60d26495a!2sJONY%C2%B4S%20BARBER!5e0!3m2!1ses!2ses!4v1768508662423!5m2!1ses!2ses"
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+                <a href="https://wa.me/636737185" target="_blank" class="contact-link whatsapp">
+                    <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
+                </a>
+    
+                <a href="mailto:jonysbarber@gmail.com" class="contact-link">
+                    <i class="far fa-envelope"></i> jonysbarber@gmail.com
+                </a>
+            </div>
+    
+            <!-- BLOQUE UBICACIÓN -->
+            <div class="contact-card">
+                <h3>
+                    <i class="fas fa-map-marker-alt"></i> Ubicación
+                </h3>
+    
+                <p class="address">
+                    C. Reina Adosinda, 3<br>
+                    33120 Pravia, Asturias
+                </p>
+    
+                <a href="https://www.google.com/maps?q=Jonys+Barber" target="_blank" class="contact-link map">
+                    <i class="fas fa-directions"></i> Cómo llegar
+                </a>
+            </div>
+    
         </div>
-      </div>
     </section>
+    
 
     <a href="https://booksy.com/es-es/115858_jonys-barber_barberia_55008_pravia" id="booksy-floating" class="booksy-float hidden" target="_blank">
         <i class="fas fa-calendar-check"></i>
