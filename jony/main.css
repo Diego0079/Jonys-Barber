@@ -1211,22 +1211,16 @@ h2 {
     background: #000;
 }
 
-/* Estilo para el vídeo local */
-.video-local {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
 
 .social-preview.tiktok-preview {
-    flex: none; /* Evita que crezca para rellenar huecos */
-    width: 300px; /* Ancho típico de un vídeo de TikTok */
-    height: 530px; /* Altura proporcional para que se vea estilizado */
-    border-radius: 20px; /* Esquinas más redondeadas estilo iPhone */
-    background: #000;
+    flex: none; /* Evita que se estire */
+    width: 300px; 
+    height: 530px; 
+    border-radius: 20px;
+    overflow: hidden;
+    background: #161616;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Sombra para darle profundidad */
+    position: relative;
 }
 
 /* Aplicamos el mismo tamaño que al TikTok para que sean iguales */
@@ -1241,16 +1235,7 @@ h2 {
     position: relative;
 }
 
-.video-tag {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 8px;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 1rem;
-}
+
 
 /* Estilo para Instagram */
 .insta-preview img {
@@ -1269,6 +1254,7 @@ h2 {
 
 .insta-preview:hover .insta-overlay { opacity: 1; }
 .insta-preview:hover img { transform: scale(1.1); }
+.tiktok-preview:hover img { transform: scale(1.1); }
 
 /* Centro */
 .social-info-center {
@@ -1308,45 +1294,38 @@ h2 {
     line-height: 1.5;
 }
 
-.tiktok-preview {
+.social-preview a {
+    display: block;
+    width: 100%;
+    height: 100%;
     position: relative;
-    cursor: pointer; /* Indica que se puede clicar para pausar */
 }
 
-.video-control-btn {
+.social-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.tiktok-overlay {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    cursor: pointer;
-    z-index: 10;
-    transition: 0.3s;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.video-control-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
+.tiktok-preview:hover .tiktok-overlay {
+    opacity: 1;
 }
 
-/* Icono de TikTok a la izquierda para no tapar el botón */
-.video-tag {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 8px;
-    border-radius: 50%;
-    color: #fff;
-    z-index: 5;
-}
 
 /* ============================================================
    ORGANIZACIÓN DE QUERIES (TABLET & MOBILE)
