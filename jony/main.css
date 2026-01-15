@@ -724,18 +724,7 @@ header.sticky .nav-title {
 
 
 
-#welcome-screen {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: #000;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Duración de 2 segundos y curva de movimiento ultra suave */
-    transition: transform 2.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 1.5s ease;
-    will-change: transform; /* Ayuda al navegador a que la animación vaya fluida */
-}
+
 #particles-js {
     position: absolute;
     width: 100%;
