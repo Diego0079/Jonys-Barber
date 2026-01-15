@@ -1788,7 +1788,21 @@ header {
         box-shadow: none !important;   /* Sin sombra */     /* Sin padding */
         width: auto !important;        /* Ajusta al contenido */
         height: auto !important;
+        
     }
+
+        /* Ajuste de las previews para que no se corten las imágenes */
+        .social-preview.tiktok-preview,
+        .social-preview.insta-preview {
+            height: auto !important;       /* El contenedor crece según la imagen */
+        }
+    
+        .social-preview.tiktok-preview img,
+        .social-preview.insta-preview img {
+            object-fit: contain !important; /* Ajusta la imagen completa */
+            width: 100% !important;         /* Ocupa todo el ancho */
+            height: auto !important;        /* La altura se ajusta proporcionalmente */
+        }
 
 
     /* Ajuste de icono */
